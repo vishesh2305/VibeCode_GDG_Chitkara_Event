@@ -1,12 +1,32 @@
-<header class="bg-slate-800 shadow-md">
+<header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
     <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text">NexusAI 🚀</a>
-        <div class="flex items-center space-x-4">
-            <a href="/" class="text-slate-300 hover:text-sky-400 transition">AI Tools</a>
-            <a href="/compiler.html" class="text-slate-300 hover:text-sky-400 transition">Live Compiler</a>
-            <div id="gamification-display" class="text-amber-400 font-semibold">
-                <span>XP: 0</span>
-            </div>
+        <a href="/" class="text-2xl font-bold bg-gradient-to-r from-sky-500 to-emerald-500 text-transparent bg-clip-text">easeai ✨</a>
+        
+        <div class="hidden md:flex items-center space-x-6">
+            <a href="/index.html" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">DocuChat</a>
+            <a href="/code-guardian.html" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Code Guardian</a>
+            <a href="/prompt-forge.html" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Prompt Forge</a>
+            <a href="/sentiment-scope.html" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Sentiment Scope</a>
+            <a href="/compiler.html" class="text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Compiler</a>
+            <div id="gamification-display" class="text-amber-500 dark:text-amber-400 font-semibold"></div>
+            <button id="theme-toggle" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                </button>
+        </div>
+
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-button" class="text-slate-600 dark:text-slate-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
     </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+        <a href="/index.html" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">DocuChat</a>
+        <a href="/code-guardian.html" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Code Guardian</a>
+        <a href="/prompt-forge.html" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Prompt Forge</a>
+        <a href="/sentiment-scope.html" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Sentiment Scope</a>
+        <a href="/compiler.html" class="block text-slate-600 dark:text-slate-300 hover:text-sky-500 transition">Compiler</a>
+        <div id="gamification-display-mobile" class="text-amber-500 dark:text-amber-400 font-semibold pt-2"></div>
+         <button id="theme-toggle-mobile" class="w-full mt-2 text-left text-slate-600 dark:text-slate-300 p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition">Toggle Theme</button>
+    </div>
 </header>

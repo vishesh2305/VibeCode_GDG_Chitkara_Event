@@ -1,21 +1,27 @@
 {
   "name": "easeai",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "An AI-powered multi-tool web application.",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "ai",
+    "gemini",
+    "node",
+    "express"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "chromadb-client": "^2.4.6",
+    "chromadb-client": "^1.8.1",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "multer": "^2.0.2",
     "pdf-parse": "^1.1.1",
-    "uuid": "^13.0.0"
+    "uuid": "^9.0.1"
   }
 }
