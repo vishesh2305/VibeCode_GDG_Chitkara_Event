@@ -1,35 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" class=""> <head>
+<html lang="en" class="">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocuChat - easeai</title>
+    <title>easeai - Your AI-Powered Innovation Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300">
-    
+
     <div id="tsparticles"></div>
+
+    <div class="absolute top-0 left-0 w-full h-screen overflow-hidden z-0">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-20 dark:opacity-10">
+            <source src="https://cdn.pixabay.com/video/2024/02/19/200851-915233989_large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <div id="main-header"></div>
 
-    <div class="container mx-auto p-4 max-w-5xl relative"> <main class="space-y-12">
-            <section id="docuchat" class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
-                <h2 class="text-2xl font-semibold mb-4 text-sky-500 dark:text-sky-400">DocuChat - Analyze & Query Documents</h2>
-                <div class="space-y-4">
-                    <div>
-                        <label for="document-upload" class="block mb-2 font-medium">Upload a PDF Document:</label>
-                        <input type="file" id="document-upload" accept=".pdf" class="block w-full text-sm text-slate-500 dark:text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-sky-500 file:text-white hover:file:bg-sky-600"/>
-                        <p id="upload-status" class="text-sm mt-2 text-slate-500 dark:text-slate-400"></p>
+    <div class="container mx-auto p-4 relative z-10">
+        <main>
+            <section class="min-h-[80vh] flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                    <span class="bg-gradient-to-r from-sky-500 to-emerald-500 text-transparent bg-clip-text">
+                        Welcome to easeai
+                    </span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mb-8">
+                    Your all-in-one AI suite for document analysis, code security, prompt engineering, and more. Built to accelerate research and innovation.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="/docuchat.html" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Get Started
+                    </a>
+                    <a href="#features" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                        Learn More
+                    </a>
+                </div>
+            </section>
+
+            <section id="features" class="py-20">
+                <h2 class="text-3xl font-bold text-center mb-12">Features at a Glance</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="text-xl font-semibold mb-2 text-sky-500">DocuChat</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Upload your documents and start a conversation. Extract insights, summarize text, and get answers in seconds.</p>
                     </div>
-                    <div id="chat-container" class="hidden">
-                        <textarea id="chat-question" class="w-full bg-slate-200 dark:bg-slate-700 p-3 rounded-md focus:ring-2 focus:ring-sky-500 outline-none" rows="3" placeholder="Ask a question about the document..."></textarea>
-                        <button id="ask-button" class="mt-2 w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded-md transition duration-300">Ask easeai</button>
-                        <div id="chat-response" class="mt-4 p-4 bg-white dark:bg-slate-900 rounded-md whitespace-pre-wrap border border-slate-200 dark:border-slate-700"></div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="text-xl font-semibold mb-2 text-emerald-500">Code Guardian</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Scan your code for vulnerabilities and get expert AI-powered suggestions to improve security and performance.</p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                        <h3 class="text-xl font-semibold mb-2 text-amber-500">Prompt Forge</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Refine your ideas into powerful, effective prompts. Let our AI help you communicate better with other AIs.</p>
                     </div>
                 </div>
             </section>
+
+            <section class="py-20">
+                 <h2 class="text-3xl font-bold text-center mb-12">What People Are Saying</h2>
+                 <div class="w-full max-w-2xl mx-auto bg-slate-100 dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-8 relative overflow-hidden">
+                    <div id="carousel-container" class="flex transition-transform duration-500 ease-in-out">
+                        <div class="w-full flex-shrink-0 text-center">
+                            <p class="text-lg italic text-slate-600 dark:text-slate-400">"easeai has revolutionized how our team approaches research. The DocuChat feature is a game-changer."</p>
+                            <p class="mt-4 font-bold">- Alex Johnson, Lead Researcher</p>
+                        </div>
+                        <div class="w-full flex-shrink-0 text-center">
+                            <p class="text-lg italic text-slate-600 dark:text-slate-400">"The Code Guardian saved us countless hours in security reviews. It's like having an expert on call 24/7."</p>
+                            <p class="mt-4 font-bold">- Sarah Chen, CTO</p>
+                        </div>
+                    </div>
+                    <button id="prev-btn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/50 dark:bg-slate-900/50 p-2 rounded-full">&lt;</button>
+                    <button id="next-btn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/50 dark:bg-slate-900/50 p-2 rounded-full">&gt;</button>
+                 </div>
+            </section>
         </main>
     </div>
-    
+
     <div id="main-footer" class="relative"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>

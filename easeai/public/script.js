@@ -8,13 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadGameState();
     updateGamificationDisplay();
     
-    // --- PAGE-SPECIFIC INITIALIZERS ---
-    // This structure ensures code only runs on the relevant page.
     if (document.getElementById('docuchat')) initializeDocuChat();
     if (document.getElementById('codeguardian')) initializeCodeGuardian();
     if (document.getElementById('promptforge')) initializePromptForge();
     if (document.getElementById('sentimentscope')) initializeSentimentScope();
     if (document.getElementById('code-editor')) initializeCompiler();
+    if (document.getElementById('carousel-container')) initializeCarousel();
 });
 
 // --- CORE & SHARED FUNCTIONS ---
@@ -25,18 +24,14 @@ async function loadComponent(url, elementId) {
         const text = await response.text();
         const element = document.getElementById(elementId);
         if (element) element.innerHTML = text;
-    } catch (error) {
-        console.error(`Failed to load component: ${url}`, error);
-    }
+    } catch (error) { console.error(`Failed to load component: ${url}`, error); }
 }
 
 function initializeMobileMenu() {
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
     }
 }
 
@@ -78,9 +73,10 @@ async function initializeParticles() {
     });
 }
 
-// --- THEME TOGGLE ---
+// --- THEME TOGGLE (UPDATED) ---
 const sunIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`;
 const moonIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
+let codeMirrorEditor = null; // Global reference to the editor instance
 
 function initializeTheme() {
     const toggleButton = document.getElementById('theme-toggle');
@@ -90,6 +86,11 @@ function initializeTheme() {
         document.documentElement.classList.toggle('dark', isDark);
         if(toggleButton) toggleButton.innerHTML = isDark ? sunIcon : moonIcon;
         if(mobileToggleButton) mobileToggleButton.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        
+        // **NEW**: Update CodeMirror theme if it exists
+        if (codeMirrorEditor) {
+            codeMirrorEditor.setOption("theme", isDark ? "dracula" : "default");
+        }
     };
 
     const toggleTheme = () => {
@@ -101,7 +102,6 @@ function initializeTheme() {
     if (toggleButton) toggleButton.addEventListener('click', toggleTheme);
     if (mobileToggleButton) mobileToggleButton.addEventListener('click', toggleTheme);
     
-    // Apply saved or system theme on load
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     applyTheme(savedTheme === 'dark' || (!savedTheme && systemPrefersDark));
@@ -254,14 +254,111 @@ function initializeSentimentScope() {
     });
 }
 
-// --- INITIALIZER FOR COMPILER PAGE ---
+function initializeCarousel() {
+    const container = document.getElementById('carousel-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    if (!container || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+    const slides = container.children;
+    const totalSlides = slides.length;
+
+    function goToSlide(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        container.style.transform = `translateX(-${index * 100}%)`;
+        currentIndex = index;
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+}
+
+
+
+function initializeTheme() {
+    const toggleButton = document.getElementById('theme-toggle');
+    const mobileToggleButton = document.getElementById('theme-toggle-mobile');
+    
+    const applyTheme = (isDark) => {
+        document.documentElement.classList.toggle('dark', isDark);
+        if(toggleButton) toggleButton.innerHTML = isDark ? sunIcon : moonIcon;
+        if(mobileToggleButton) mobileToggleButton.textContent = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+        
+        // **NEW**: Update CodeMirror theme if it exists
+        if (codeMirrorEditor) {
+            codeMirrorEditor.setOption("theme", isDark ? "dracula" : "default");
+        }
+    };
+
+    const toggleTheme = () => {
+        const isDark = !document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        applyTheme(isDark);
+    };
+
+    if (toggleButton) toggleButton.addEventListener('click', toggleTheme);
+    if (mobileToggleButton) mobileToggleButton.addEventListener('click', toggleTheme);
+    
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme === 'dark' || (!savedTheme && systemPrefersDark));
+}
+
+
+
+
 function initializeCompiler() {
     if (typeof CodeMirror === 'undefined') return;
-    const editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
-        lineNumbers: true, mode: 'javascript', theme: 'dracula', autoCloseBrackets: true,
+
+    // Use the global reference
+    codeMirrorEditor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+        lineNumbers: true, 
+        mode: 'javascript', 
+        theme: document.documentElement.classList.contains('dark') ? "dracula" : "default", // Set initial theme
+        autoCloseBrackets: true,
     });
     
-    // ... The rest of your compiler logic from compiler-script.js
-    // I've omitted it for brevity, but you would paste the two event listeners here.
-    // Remember to add addXP(15) in the 'get-suggestions-btn' click handler.
+    const runBtn = document.getElementById('run-code-btn');
+    const suggestBtn = document.getElementById('get-suggestions-btn');
+    const outputContainer = document.getElementById('output-container');
+
+    // **FIXED COMPILER LOGIC**
+    runBtn.addEventListener('click', () => {
+        const code = codeMirrorEditor.getValue();
+        outputContainer.className = "bg-slate-100 dark:bg-slate-800 p-4 rounded-lg h-[400px] font-mono whitespace-pre-wrap overflow-y-auto border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200"; // Reset styles
+        outputContainer.innerHTML = '<span class="text-slate-500">Executing...</span>';
+        
+        const output = [];
+        const oldLog = console.log;
+        console.log = (...args) => {
+            output.push(args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' '));
+        };
+
+        try {
+            eval(code);
+            outputContainer.textContent = output.join('\n') || 'Execution finished with no output.';
+        } catch (e) {
+            outputContainer.className += " text-red-500"; // Add error color
+            outputContainer.textContent = `Error: ${e.message}`;
+        } finally {
+            console.log = oldLog; // IMPORTANT: Restore original console.log
+        }
+    });
+
+    suggestBtn.addEventListener('click', async () => {
+        const code = codeMirrorEditor.getValue();
+        if (!code) return;
+        
+        showLoading(outputContainer, 'Getting AI suggestions...');
+        const prompt = `You are an expert code reviewer. Analyze the following JavaScript code. Provide suggestions for improvement, optimization, or best practices. Format your response clearly in Markdown.
+        --- Code ---
+        ${code}
+        --- End Code ---`;
+
+        const result = await getApiResponse('/api/generate', { prompt });
+        outputContainer.textContent = result.response || 'Failed to get suggestions.';
+        addXP(15);
+    });
 }
