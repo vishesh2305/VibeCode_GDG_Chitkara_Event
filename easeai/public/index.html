@@ -16,6 +16,7 @@
             <source src="https://cdn.pixabay.com/video/2024/02/19/200851-915233989_large.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent dark:from-slate-900 dark:via-slate-900/50"></div>
     </div>
 
     <div id="main-header"></div>
@@ -23,58 +24,48 @@
     <div class="container mx-auto p-4 relative z-10">
         <main>
             <section class="min-h-[80vh] flex flex-col items-center justify-center text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade-in-down">
                     <span class="bg-gradient-to-r from-sky-500 to-emerald-500 text-transparent bg-clip-text">
-                        Welcome to easeai
+                        Unlock Infinite Innovation with easeai
                     </span>
                 </h1>
-                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mb-8">
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mb-8 animate-fade-in-up">
                     Your all-in-one AI suite for document analysis, code security, prompt engineering, and more. Built to accelerate research and innovation.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="/docuchat.html" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
-                        Get Started
+                    <a href="/docuchat.html" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                        Start Analyzing
                     </a>
-                    <a href="#features" class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
-                        Learn More
+                    <a href="#features" class="bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 text-slate-700 dark:text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                        Explore Features
                     </a>
                 </div>
             </section>
 
             <section id="features" class="py-20">
-                <h2 class="text-3xl font-bold text-center mb-12">Features at a Glance</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                <h2 class="text-3xl font-bold text-center mb-12">An Entire Toolkit at Your Fingertips</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 text-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3242/3242257.png" alt="DocuChat Icon" class="h-16 w-16 mx-auto mb-4 filter dark:invert">
                         <h3 class="text-xl font-semibold mb-2 text-sky-500">DocuChat</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Upload your documents and start a conversation. Extract insights, summarize text, and get answers in seconds.</p>
+                        <p class="text-slate-600 dark:text-slate-400">Instantly chat with your PDFs. Extract insights, summarize, and get answers in seconds.</p>
                     </div>
-                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 text-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/84/84173.png" alt="Code Guardian Icon" class="h-16 w-16 mx-auto mb-4 filter dark:invert">
                         <h3 class="text-xl font-semibold mb-2 text-emerald-500">Code Guardian</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Scan your code for vulnerabilities and get expert AI-powered suggestions to improve security and performance.</p>
+                        <p class="text-slate-600 dark:text-slate-400">Scan code for vulnerabilities and get AI-powered suggestions to improve security.</p>
                     </div>
-                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 text-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1694/1694331.png" alt="Prompt Forge Icon" class="h-16 w-16 mx-auto mb-4 filter dark:invert">
                         <h3 class="text-xl font-semibold mb-2 text-amber-500">Prompt Forge</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Refine your ideas into powerful, effective prompts. Let our AI help you communicate better with other AIs.</p>
+                        <p class="text-slate-600 dark:text-slate-400">Refine your ideas into powerful prompts to get the best results from any LLM.</p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 text-center">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1534/1534489.png" alt="Sentiment Scope Icon" class="h-16 w-16 mx-auto mb-4 filter dark:invert">
+                        <h3 class="text-xl font-semibold mb-2 text-rose-500">Sentiment Scope</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Analyze the emotional tone of any text to understand sentiment instantly.</p>
                     </div>
                 </div>
-            </section>
-
-            <section class="py-20">
-                 <h2 class="text-3xl font-bold text-center mb-12">What People Are Saying</h2>
-                 <div class="w-full max-w-2xl mx-auto bg-slate-100 dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 p-8 relative overflow-hidden">
-                    <div id="carousel-container" class="flex transition-transform duration-500 ease-in-out">
-                        <div class="w-full flex-shrink-0 text-center">
-                            <p class="text-lg italic text-slate-600 dark:text-slate-400">"easeai has revolutionized how our team approaches research. The DocuChat feature is a game-changer."</p>
-                            <p class="mt-4 font-bold">- Alex Johnson, Lead Researcher</p>
-                        </div>
-                        <div class="w-full flex-shrink-0 text-center">
-                            <p class="text-lg italic text-slate-600 dark:text-slate-400">"The Code Guardian saved us countless hours in security reviews. It's like having an expert on call 24/7."</p>
-                            <p class="mt-4 font-bold">- Sarah Chen, CTO</p>
-                        </div>
-                    </div>
-                    <button id="prev-btn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/50 dark:bg-slate-900/50 p-2 rounded-full">&lt;</button>
-                    <button id="next-btn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/50 dark:bg-slate-900/50 p-2 rounded-full">&gt;</button>
-                 </div>
             </section>
         </main>
     </div>
